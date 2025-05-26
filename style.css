@@ -5,11 +5,10 @@
     box-sizing: border-box;
 }
 
-
 body {
     font-family: 'Anonymous Pro', 'Courier New', monospace;
     background: linear-gradient(135deg, #2f2f2f 0%, #1a1a1a 50%, #0d0d0d 100%);
-    color: #E6D7C3; /* Cream/beige color */
+    color: #E6D7C3;
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
@@ -96,7 +95,7 @@ header {
 }
 
 .logo-subtitle {
-    font-size: 20px;        /* Match nav font size */
+    font-size: 20px;
     color: #E6D7C3;
     text-align: center;
     margin-top: 4px;
@@ -113,20 +112,20 @@ nav {
 nav a {
     color: #E6D7C3;
     text-decoration: none;
-    font-size: 20px;        /* Even bigger */
-    font-weight: bold;       /* Slightly bolder */
-    padding: 12px 20px;     /* More padding */
-    border-radius: 6px;     /* Optional: rounded corners */
+    font-size: 20px;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 6px;
     transition: all 0.3s ease;
 }
 
 nav a:hover {
-    background: rgba(255, 255, 255, 0.1);  /* Optional: hover background */
+    background: rgba(255, 255, 255, 0.1);
     opacity: 0.7;
 }
 
 .resume-btn {
-    background: linear-gradient(135deg, #FB5656, #FB5656); /* Red */
+    background: linear-gradient(135deg, #FB5656, #FB5656);
     padding: 12px 24px;
     border-radius: 8px;
     text-decoration: none;
@@ -138,10 +137,9 @@ nav a:hover {
     gap: 8px;
 }
 
-
 .resume-btn:hover {
-    opacity: 1; /* Keep full opacity */
-    background: linear-gradient(135deg, #FB5656, #FB5656); /* Keep red background */
+    opacity: 1;
+    background: linear-gradient(135deg, #FB5656, #FB5656);
     transform: translateY(-2px);
     box-shadow: 0 10px 25px rgba(251, 86, 86, 0.3);
 }
@@ -162,7 +160,7 @@ nav a:hover {
 }
 
 .hero h1 {
-    font-size:2.8rem;
+    font-size: 2.8rem;
     font-weight: 500;
     margin-bottom: 30px;
     line-height: 1.1;
@@ -170,7 +168,7 @@ nav a:hover {
 }
 
 .hero h1 .highlight {
-    background: linear-gradient(135deg, #4A9EFF, #4A9EFF); /* Red */
+    background: linear-gradient(135deg, #4A9EFF, #4A9EFF);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -178,11 +176,11 @@ nav a:hover {
 }
 
 .learn-more-btn {
-    background: linear-gradient(135deg, #FB5656, #FB5656);/* Red */
+    background: linear-gradient(135deg, #FB5656, #FB5656);
     border: none;
     padding: 16px 32px;
     border-radius: 50px;
-    color: #E6D7C3; /* Cream/beige color */
+    color: #E6D7C3;
     font-size: 18px;
     font-weight: bold;
     cursor: pointer;
@@ -195,7 +193,7 @@ nav a:hover {
 
 .learn-more-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 15px 35px rgba(251, 86, 86, 0.4); /* Red shadow for red button */
+    box-shadow: 0 15px 35px rgba(251, 86, 86, 0.4);
 }
 
 /* Content sections */
@@ -228,17 +226,18 @@ nav a:hover {
 }
 
 /* Section header colors */
-#about h2, #experience h2, #contact h2{
-    color: #4A9EFF; /* Green */
+#about h2, #experience h2, #contact h2 {
+    color: #4A9EFF;
     font-weight: bold;
 }
 
 /* About section */
 .about-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 40px;
     margin-top: 60px;
+    align-items: start;
 }
 
 .about-item {
@@ -247,6 +246,9 @@ nav a:hover {
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
+    min-height: 280px;  /* Reduced from 350px to 280px */
+    display: flex;
+    flex-direction: column;
 }
 
 .about-item h3 {
@@ -254,6 +256,7 @@ nav a:hover {
     margin-bottom: 15px;
     color: #FB5656;
     letter-spacing: 0.025em;
+    text-align: center;
 }
 
 .about-item p {
@@ -261,13 +264,43 @@ nav a:hover {
     opacity: 0.9;
 }
 
+/* Remove the special styling for Tools card - make it match others */
+.about-item:nth-child(4) {
+    text-align: left;  /* Change back to left like others */
+}
+
+.about-item:nth-child(4) strong {
+    display: inline;   /* Change back to inline like normal text */
+    text-align: left;
+    margin-bottom: 0;
+    color: #E6D7C3;
+    font-weight: 600;
+}
+
+.about-item:nth-child(4) p {
+    margin-bottom: 0;  /* Remove extra spacing */
+    text-align: left;
+}
+
+.about-item:nth-child(4) p:last-child {
+    margin-bottom: 0;
+}
+/* Experience section - uniform sized boxes, centered */
+.experience-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
 .experience-item {
     background: rgba(255, 255, 255, 0.05);
     padding: 30px;
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    margin-bottom: 20px;
     backdrop-filter: blur(10px);
+    text-align: center;
+    width: 600px;  /* Fixed width - adjust as needed */
+    margin: 0;
 }
 
 .job-title {
@@ -278,7 +311,7 @@ nav a:hover {
 }
 
 .company {
-    color: #FB5656; /* Red */
+    color: #FB5656;
     font-weight: 500;
     margin-bottom: 5px;
 }
@@ -288,13 +321,20 @@ nav a:hover {
     font-size: 0.9rem;
 }
 
+/* Contact section - uniform size, centered */
+.contact-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
 .contact-section {
     text-align: center;
     background: rgba(255, 255, 255, 0.05);
-    padding: 60px 40px;
-    border-radius: 20px;
+    padding: 40px;
+    border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
+    width: 600px;  /* Same width as experience boxes */
 }
 
 .contact-links {
@@ -306,20 +346,20 @@ nav a:hover {
 }
 
 .contact-link {
-    background: linear-gradient(135deg, #FB5656, #FB5656); /* Red background like the button */
-    color: #E6D7C3; /* Cream text */
+    background: linear-gradient(135deg, #FB5656, #FB5656);
+    color: #E6D7C3;
     text-decoration: none;
     padding: 12px 24px;
-    border-radius: 50px; /* Changed from 8px to make it pill-shaped */
-    border: none; /* Remove border */
+    border-radius: 50px;
+    border: none;
     transition: all 0.3s ease;
-    font-weight: bold; /* Match the Learn more button */
+    font-weight: bold;
 }
 
 .contact-link:hover {
-    background: linear-gradient(135deg, #FB5656, #FB5656); /* Keep red */
+    background: linear-gradient(135deg, #FB5656, #FB5656);
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(251, 86, 86, 0.3); /* Red shadow */
+    box-shadow: 0 10px 25px rgba(251, 86, 86, 0.3);
 }
 
 /* Responsive design */
