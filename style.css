@@ -24,10 +24,10 @@ a,
 .resume-btn,
 .contact-link,
 .learn-more-btn {
-    color: #E6D7C3;
-    -webkit-text-fill-color: #E6D7C3;
+    color: #E6D7C3 !important;
+    -webkit-text-fill-color: #E6D7C3 !important;
     background-image: none;
-    background: linear-gradient(135deg, #FB5656, #FB5656);
+    background: linear-gradient(135deg, #FB5656, #FB5656) !important;
 }
 
 /* Fix gradient text inconsistencies */
@@ -408,6 +408,28 @@ nav a:hover {
     background: linear-gradient(135deg, #FB5656, #FB5656);
     transform: translateY(-2px);
     box-shadow: 0 10px 25px rgba(251, 86, 86, 0.3);
+}
+
+/* Utility button class for red buttons */
+.btn-red {
+  background: linear-gradient(135deg, #FB5656, #FB5656);
+  color: #E6D7C3 !important;
+  -webkit-text-fill-color: #E6D7C3 !important;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-red:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(251, 86, 86, 0.3);
 }
 
 /* Add these mobile fixes to the bottom of your style.css file */
