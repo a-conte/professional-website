@@ -228,9 +228,14 @@ nav a:hover {
 }
 
 /* Section header colors */
-#about h2, #experience h2, #contact h2 {
-    color: #4A9EFF;
-    font-weight: bold;
+#about h2,
+#experience h2,
+#contact h2 {
+  background: linear-gradient(135deg, #4A9EFF, #4A9EFF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: bold;
 }
 
 /* About section */
