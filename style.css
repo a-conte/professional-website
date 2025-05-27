@@ -162,15 +162,16 @@ nav a:hover {
 }
 
 .hero h1 {
-    font-size: 2.8rem;
+    font-size: clamp(1.6rem, 5vw, 2.4rem);
     font-weight: 500;
     margin-bottom: 30px;
-    line-height: 1.1;
+    line-height: 1.2;
     letter-spacing: 0.025em;
 }
 
 .hero h1 .highlight {
-    background: linear-gradient(135deg, #4A9EFF, #4A9EFF);
+    color: #4A9EFF; /* fallback for unsupported browsers */
+    background: linear-gradient(135deg, #5AB4FF, #379BFF);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -220,7 +221,7 @@ nav a:hover {
 }
 
 .section h2 {
-    font-size: 2.5rem;
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
     font-weight: bold;
     margin-bottom: 40px;
     text-align: center;
@@ -231,11 +232,13 @@ nav a:hover {
 #about h2,
 #experience h2,
 #contact h2 {
-  background: linear-gradient(135deg, #4A9EFF, #4A9EFF);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-weight: bold;
+    color: #4A9EFF; /* fallback */
+    background: linear-gradient(135deg, #5AB4FF, #379BFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: bold;
+    text-align: center;
 }
 
 /* About section */
@@ -258,17 +261,21 @@ nav a:hover {
     flex-direction: column;
 }
 
-.about-item h3 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    color: #FB5656;
-    letter-spacing: 0.025em;
-    text-align: center;
+.about-item p {
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+  line-height: 1.6;
+  opacity: 0.9;
+  -webkit-text-fill-color: initial;
+  background: none;
+  color: #E6D7C3;
 }
 
-.about-item p {
-    line-height: 1.6;
-    opacity: 0.9;
+.about-item h3 {
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  color: #FB5656;
+  font-weight: bold;
+  -webkit-text-fill-color: initial;
+  background: none;
 }
 
 /* Remove the special styling for Tools card - make it match others */
