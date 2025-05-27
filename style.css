@@ -362,35 +362,148 @@ nav a:hover {
     box-shadow: 0 10px 25px rgba(251, 86, 86, 0.3);
 }
 
-/* Responsive design */
+/* Add these mobile fixes to the bottom of your style.css file */
+
+/* Improved mobile responsive design */
 @media (max-width: 768px) {
     header {
-        padding: 20px;
+        padding: 15px;
         flex-direction: column;
-        gap: 20px;
+        gap: 15px;
+    }
+
+    .logo {
+        width: 120px;
+        height: 60px;
+    }
+
+    .logo-subtitle {
+        font-size: 16px;
     }
 
     nav {
-        gap: 20px;
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav a {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+
+    .resume-btn {
+        padding: 10px 20px;
+        font-size: 14px;
     }
 
     .hero {
-        padding: 80px 20px;
+        padding: 60px 15px;
     }
 
     .hero h1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+        line-height: 1.2;
+    }
+
+    .learn-more-btn {
+        padding: 14px 28px;
+        font-size: 16px;
     }
 
     .content {
-        padding: 60px 20px;
+        padding: 40px 15px;
     }
 
     .section h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .about-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
+
+    .about-item {
+        min-height: auto;
+        padding: 20px;
+    }
+
+    .about-item h3 {
+        font-size: 1.3rem;
+    }
+
+    /* Fix fixed-width elements for mobile */
+    .experience-item {
+        width: 100%;
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    .contact-section {
+        width: 100%;
+        max-width: 100%;
+        padding: 30px 20px;
+    }
+
+    .contact-links {
+        gap: 15px;
+    }
+
+    .contact-link {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+/* Additional breakpoint for very small phones */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .section h2 {
+        font-size: 1.5rem;
+    }
+
+    .about-item {
+        padding: 15px;
+    }
+
+    .about-item h3 {
+        font-size: 1.2rem;
+    }
+
+    .experience-item {
+        padding: 15px;
+    }
+
+    .contact-section {
+        padding: 20px 15px;
+    }
+
+    .contact-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-link {
+        width: 100%;
+        max-width: 200px;
+        text-align: center;
+    }
+}
+
+/* Ensure no horizontal scrolling */
+* {
+    max-width: 100%;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* Make sure background elements don't cause scrolling */
+.stars, .bg-geometry {
+    overflow: hidden;
 }
