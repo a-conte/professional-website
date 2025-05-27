@@ -101,6 +101,8 @@ header {
     margin-top: 4px;
     font-weight: bold;
     font-family: 'Anonymous Pro', monospace;
+    white-space: normal;
+    word-break: break-word;
 }
 
 nav {
@@ -366,94 +368,105 @@ nav a:hover {
 
 /* Improved mobile responsive design */
 @media (max-width: 768px) {
-    header {
-        padding: 15px;
-        flex-direction: column;
-        gap: 15px;
-    }
+  header {
+    padding: 15px;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+  }
 
-    .logo {
-        width: 120px;
-        height: 60px;
-    }
+  .logo {
+    width: auto;
+    height: auto;
+    max-width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .logo-subtitle {
-        font-size: 16px;
-    }
+  .logo-subtitle {
+    font-size: 14px;
+    margin-top: 4px;
+    white-space: normal;
+    word-break: break-word;
+    text-align: center;
+  }
 
-    nav {
-        gap: 15px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+  nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+  }
 
-    nav a {
-        font-size: 16px;
-        padding: 8px 16px;
-    }
+  nav a {
+    display: block;
+    font-size: 16px;
+    padding: 6px 12px;
+  }
 
-    .resume-btn {
-        padding: 10px 20px;
-        font-size: 14px;
-    }
+  .resume-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
 
-    .hero {
-        padding: 60px 15px;
-    }
+  .hero {
+    padding: 60px 15px;
+  }
 
-    .hero h1 {
-        font-size: 2.2rem;
-        line-height: 1.2;
-    }
+  .hero h1 {
+    font-size: 2.2rem;
+    line-height: 1.2;
+  }
 
-    .learn-more-btn {
-        padding: 14px 28px;
-        font-size: 16px;
-    }
+  .learn-more-btn {
+    padding: 14px 28px;
+    font-size: 16px;
+  }
 
-    .content {
-        padding: 40px 15px;
-    }
+  .content {
+    padding: 40px 15px;
+  }
 
-    .section h2 {
-        font-size: 1.8rem;
-    }
+  .section h2 {
+    font-size: 1.8rem;
+  }
 
-    .about-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 
-    .about-item {
-        min-height: auto;
-        padding: 20px;
-    }
+  .about-item {
+    min-height: auto;
+    padding: 20px;
+  }
 
-    .about-item h3 {
-        font-size: 1.3rem;
-    }
+  .about-item h3 {
+    font-size: 1.3rem;
+  }
 
-    /* Fix fixed-width elements for mobile */
-    .experience-item {
-        width: 100%;
-        max-width: 100%;
-        padding: 20px;
-    }
+  .experience-item {
+    width: 100%;
+    max-width: 100%;
+    padding: 20px;
+  }
 
-    .contact-section {
-        width: 100%;
-        max-width: 100%;
-        padding: 30px 20px;
-    }
+  .contact-section {
+    width: 100%;
+    max-width: 100%;
+    padding: 30px 20px;
+  }
 
-    .contact-links {
-        gap: 15px;
-    }
+  .contact-links {
+    gap: 15px;
+  }
 
-    .contact-link {
-        padding: 10px 20px;
-        font-size: 14px;
-    }
+  .contact-link {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
 }
 
 /* Additional breakpoint for very small phones */
