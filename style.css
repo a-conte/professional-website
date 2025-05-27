@@ -12,6 +12,40 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
+
+    /* Add this directly inside body for smoother font rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Add this block next to help with color consistency across devices */
+button,
+a,
+.resume-btn,
+.contact-link,
+.learn-more-btn {
+    color: #E6D7C3;
+    -webkit-text-fill-color: #E6D7C3;
+    background-image: none;
+    background: linear-gradient(135deg, #FB5656, #FB5656);
+}
+
+/* Fix gradient text inconsistencies */
+.highlight {
+    background: linear-gradient(135deg, #5AB4FF, #379BFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: #4A9EFF; /* fallback */
+}
+
+.section h2 {
+    background: linear-gradient(135deg, #5AB4FF, #379BFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: #4A9EFF; /* fallback */
+    font-weight: bold;
 }
 
 /* Animated starfield background */
