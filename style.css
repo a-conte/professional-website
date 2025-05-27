@@ -18,12 +18,11 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Add this block next to help with color consistency across devices */
-button,
-a,
+/* Only apply red background to buttons meant to be red */
 .resume-btn,
 .contact-link,
-.learn-more-btn {
+.learn-more-btn,
+.btn-red {
     color: #E6D7C3 !important;
     -webkit-text-fill-color: #E6D7C3 !important;
     background-image: none;
