@@ -85,8 +85,7 @@
         <p><strong>💼 Business Tools:</strong><br>
         📋 Excel, 📊 Google Sheets</p>
     </div>
-        </div>
-    </section>
+
 </div>
 </section>
 
@@ -127,14 +126,21 @@
                 <a href="mailto:antconte92@gmail.com" class="contact-link btn-red">Email</a>
                 <a href="https://linkedin.com/in/antconte92/" class="contact-link btn-red">LinkedIn</a>
                 <a href="https://github.com/a-conte" class="contact-link btn-red">GitHub</a>
-            </div>
         </div>
     </div>
-</section>
-            </section>
-        </div>
-    </main>
+</section> <!-- ✅ Close contact section properly -->
+
+</main>
 
     <script src="script.js"></script>
+<script>
+    function scrollToSection(id) {
+        const section = document.getElementById(id);
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+    </script>
 </body>
 </html>
+
