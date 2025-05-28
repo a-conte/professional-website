@@ -272,11 +272,11 @@ nav a:hover {
 
 /* About section */
 .about-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex; /* Switch from grid to flex for consistent height handling */
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 40px;
     margin-top: 60px;
-    align-items: start;
 }
 
 .about-item {
@@ -285,11 +285,13 @@ nav a:hover {
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
-    min-height: 280px;  /* Reduced from 350px to 280px */
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    flex: 1 1 45%;
+    min-height: 360px; /* Equal height for all cards */
+    max-width: 450px;   /* Optional: keeps them nicely sized on wide screens */
 }
-
 .about-item p {
   font-size: clamp(0.95rem, 2.5vw, 1.1rem);
   line-height: 1.6;
@@ -309,6 +311,10 @@ nav a:hover {
 .about-item h3,
 .about-item p {
   -webkit-text-fill-color: inherit !important;
+}
+
+.about-item p:last-of-type {
+    margin-bottom: 0;
 }
 
 /* Remove the special styling for Tools card - make it match others */
@@ -498,10 +504,10 @@ nav a:hover {
   }
 
   .about-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+   flex-direction: column;
+   align-items: stretch;
+   gap: 20px;
   }
-
   .about-item {
     min-height: auto;
     padding: 20px;
