@@ -13,21 +13,18 @@ body {
     overflow-x: hidden;
     position: relative;
 
-    /* Add this directly inside body for smoother font rendering */
+    /* Font smoothing for better text rendering */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Only apply red background to buttons meant to be red */
-.resume-btn,
-.contact-link,
-.learn-more-btn,
-.btn-red {
-    color: #E6D7C3 !important;
-    -webkit-text-fill-color: #E6D7C3 !important;
-    background-image: none;
-    background: linear-gradient(135deg, #FB5656, #FB5656) !important;
+/* Ensure images and media are responsive */
+img, svg, video {
+    max-width: 100%;
+    height: auto;
 }
+
+
 
 /* Fix gradient text inconsistencies */
 .highlight {
@@ -46,7 +43,6 @@ body {
     color: #4A9EFF; /* fallback */
     font-weight: bold;
 }
-
 /* Animated starfield background */
 .stars {
     position: fixed;
@@ -310,6 +306,10 @@ nav a:hover {
   -webkit-text-fill-color: initial;
   background: none;
 }
+.about-item h3,
+.about-item p {
+  -webkit-text-fill-color: inherit !important;
+}
 
 /* Remove the special styling for Tools card - make it match others */
 .about-item:nth-child(4) {
@@ -411,26 +411,23 @@ nav a:hover {
 
 /* Utility button class for red buttons */
 .btn-red {
-  background: linear-gradient(135deg, #FB5656, #FB5656);
+  background: linear-gradient(135deg, #FB5656, #FB5656) !important;
   color: #E6D7C3 !important;
   -webkit-text-fill-color: #E6D7C3 !important;
-  border: none;
-  padding: 12px 24px;
   border-radius: 50px;
+  padding: 12px 24px;
   font-weight: bold;
-  text-decoration: none;
-  transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
 .btn-red:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 25px rgba(251, 86, 86, 0.3);
 }
-
 /* Add these mobile fixes to the bottom of your style.css file */
 
 /* Improved mobile responsive design */
@@ -579,14 +576,6 @@ nav a:hover {
     }
 }
 
-/* Ensure no horizontal scrolling */
-* {
-    max-width: 100%;
-}
-
-body {
-    overflow-x: hidden;
-}
 
 /* Make sure background elements don't cause scrolling */
 .stars, .bg-geometry {
