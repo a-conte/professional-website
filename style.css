@@ -214,8 +214,8 @@ header {
 }
 
 .logo {
-    width: 150px;
-    height: 80px;
+    width: 180px;
+    height: 100px;
     position: relative;
 }
 
@@ -226,7 +226,7 @@ header {
 }
 
 .logo-subtitle {
-    font-size: 20px;
+    font-size: 24px;
     color: #E6D7C3;
     text-align: center;
     margin-top: 4px;
