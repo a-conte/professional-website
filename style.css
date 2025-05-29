@@ -1,5 +1,97 @@
 /* Reset and base styles */
 /* Remove underlines and pseudo-element icons/arrows from all anchor tags */
+/* ADD THIS TO THE TOP OF YOUR CSS FILE - MOST AGGRESSIVE UNDERLINE REMOVAL */
+
+/* Force remove ALL underlines from every possible element */
+*, *::before, *::after {
+    text-decoration: none !important;
+    text-decoration-line: none !important;
+    text-decoration-color: transparent !important;
+    text-decoration-style: none !important;
+    text-underline-offset: none !important;
+    text-underline-position: none !important;
+    -webkit-text-decoration: none !important;
+    -moz-text-decoration: none !important;
+    -ms-text-decoration: none !important;
+    -o-text-decoration: none !important;
+}
+
+/* Target all possible link states */
+a, a:link, a:visited, a:hover, a:active, a:focus, a:focus-visible, a:focus-within,
+button, button:hover, button:focus, button:active,
+nav a, nav a:hover, nav a:visited,
+.contact-link, .contact-link:hover, .contact-link:visited,
+.btn-red, .btn-red:hover, .btn-red:visited,
+.resume-btn, .resume-btn:hover, .resume-btn:visited,
+.learn-more-btn, .learn-more-btn:hover {
+    text-decoration: none !important;
+    text-decoration-line: none !important;
+    border: none !important;
+    border-bottom: none !important;
+    outline: none !important;
+    -webkit-text-decoration: none !important;
+    -webkit-text-decoration-line: none !important;
+}
+
+/* Browser-specific fixes */
+@supports (-webkit-appearance: none) {
+    a { -webkit-text-decoration-skip: objects !important; }
+}
+
+/* FIX ABOUT ME SECTION CENTERING AND LAYOUT */
+#about {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.about-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(300px, 1fr)) !important;
+    gap: 30px !important;
+    margin: 40px auto !important;
+    max-width: 900px !important;
+    width: 100% !important;
+    padding: 0 20px !important;
+}
+
+.about-item {
+    background: rgba(255, 255, 255, 0.05) !important;
+    padding: 30px !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    min-height: 280px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Center the content container */
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 80px auto;
+}
+
+/* Mobile responsive fix */
+@media (max-width: 768px) {
+    .about-grid {
+        grid-template-columns: 1fr !important;
+        padding: 0 !important;
+    }
+}
+
+
+
+
 a {
     text-decoration: none !important;
 }
@@ -35,8 +127,6 @@ img, svg, video {
     height: auto;
 }
 
-
-
 /* Fix gradient text inconsistencies */
 .highlight {
     background: linear-gradient(135deg, #5AB4FF, #379BFF);
@@ -54,6 +144,7 @@ img, svg, video {
     color: #4A9EFF; /* fallback */
     font-weight: bold;
 }
+
 /* Animated starfield background */
 .stars {
     position: fixed;
@@ -162,9 +253,9 @@ nav a {
 }
 
 nav a:hover {
-  background: rgba(255, 255, 255, 0.1);
-  opacity: 0.9;
-  text-decoration: none;
+    background: rgba(255, 255, 255, 0.1);
+    opacity: 0.9;
+    text-decoration: none;
 }
 
 .resume-btn {
@@ -282,13 +373,15 @@ nav a:hover {
     text-align: center;
 }
 
-/* About section */
+/* About section - FIXED 2x2 GRID */
 .about-grid {
-    display: flex; /* Switch from grid to flex for consistent height handling */
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 40px;
-    margin-top: 60px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .about-item {
@@ -297,59 +390,39 @@ nav a:hover {
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
+    min-height: 300px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    flex: 1 1 45%;
-    min-height: 360px; /* Equal height for all cards */
-    max-width: 450px;   /* Optional: keeps them nicely sized on wide screens */
-}
-.about-item p {
-  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
-  line-height: 1.6;
-  opacity: 0.9;
-  -webkit-text-fill-color: initial;
-  background: none;
-  color: #E6D7C3;
 }
 
 .about-item h3 {
-  font-size: clamp(1rem, 2.5vw, 1.3rem);
-  color: #FB5656;
-  font-weight: bold;
-  -webkit-text-fill-color: initial;
-  background: none;
+    font-size: 1.3rem;
+    color: #FB5656;
+    font-weight: bold;
+    margin-bottom: 20px;
+    -webkit-text-fill-color: initial;
+    background: none;
 }
-.about-item h3,
+
 .about-item p {
-  -webkit-text-fill-color: inherit !important;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+    color: #E6D7C3;
+    margin-bottom: 15px;
+    -webkit-text-fill-color: initial;
+    background: none;
 }
 
-.about-item p:last-of-type {
+.about-item p:last-child {
     margin-bottom: 0;
 }
 
-/* Remove the special styling for Tools card - make it match others */
-.about-item:nth-child(4) {
-    text-align: left;  /* Change back to left like others */
-}
-
-.about-item:nth-child(4) strong {
-    display: inline;   /* Change back to inline like normal text */
-    text-align: left;
-    margin-bottom: 0;
+.about-item strong {
     color: #E6D7C3;
     font-weight: 600;
 }
 
-.about-item:nth-child(4) p {
-    margin-bottom: 0;  /* Remove extra spacing */
-    text-align: left;
-}
-
-.about-item:nth-child(4) p:last-child {
-    margin-bottom: 0;
-}
 /* Experience section - uniform sized boxes, centered */
 .experience-container {
     display: flex;
@@ -364,7 +437,7 @@ nav a:hover {
     border: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     text-align: center;
-    width: 600px;  /* Fixed width - adjust as needed */
+    width: 600px;
     margin: 0;
 }
 
@@ -399,7 +472,7 @@ nav a:hover {
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
-    width: 600px;  /* Same width as experience boxes */
+    width: 600px;
 }
 
 .contact-links {
@@ -429,136 +502,333 @@ nav a:hover {
 
 /* Utility button class for red buttons */
 .btn-red {
-  background: linear-gradient(135deg, #FB5656, #FB5656) !important;
-  color: #E6D7C3 !important;
-  -webkit-text-fill-color: #E6D7C3 !important;
-  border-radius: 50px;
-  padding: 12px 24px;
-  font-weight: bold;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  transition: all 0.3s ease;
+    background: linear-gradient(135deg, #FB5656, #FB5656) !important;
+    color: #E6D7C3 !important;
+    -webkit-text-fill-color: #E6D7C3 !important;
+    border-radius: 50px;
+    padding: 12px 24px;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
 }
 
 .btn-red:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(251, 86, 86, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(251, 86, 86, 0.3);
 }
-/* Add these mobile fixes to the bottom of your style.css file */
+
+/* Complete underline removal - aggressive rules */
+* {
+    text-decoration: none !important;
+    text-underline-position: none !important;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active,
+a:focus,
+a:focus-visible,
+a:focus-within {
+    text-decoration: none !important;
+    text-decoration-line: none !important;
+    text-decoration-style: none !important;
+    border-bottom: none !important;
+    outline: none !important;
+}
+
+/* Remove any possible underlines from specific elements */
+.contact-link,
+.contact-link:hover,
+.contact-link:visited,
+.contact-link:active,
+.contact-link:focus {
+    text-decoration: none !important;
+    border: none !important;
+    outline: none !important;
+}
+
+/* 🔒 Global fix for all links and buttons to remove underlines and arrows */
+a,
+button,
+.resume-btn,
+.learn-more-btn,
+.contact-link,
+.btn-red {
+    text-decoration: none !important;
+}
+
+/* 🔪 Remove pseudo-elements that may insert arrows or style hints */
+a::after,
+a::before,
+button::after,
+button::before,
+.resume-btn::after,
+.resume-btn::before,
+.learn-more-btn::after,
+.learn-more-btn::before {
+    content: "" !important;
+    display: none !important;
+    text-decoration: none !important;
+}
+
+nav a {
+    text-decoration: none !important;
+    text-underline: none !important;
+    -webkit-text-decoration: none !important;
+}
+
+/* Hero subtitle */
+.hero-subtitle {
+    display: block;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    margin-top: 10px;
+    font-weight: 400;
+}
+
+/* Loading Screen */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+body.loaded .loading-screen {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-top-color: #4A9EFF;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    position: relative;
+    z-index: 101;
+}
+
+.mobile-menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: #E6D7C3;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: #FB5656;
+    color: #E6D7C3;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #FF6B6B;
+    transform: translateY(-3px);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    opacity: 0.6;
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 10;
+}
+
+/* Arrow down in Learn More button */
+.arrow-down {
+    margin-left: 5px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.learn-more-btn:hover .arrow-down {
+    transform: translateY(2px);
+}
+
+/* Make sure background elements don't cause scrolling */
+.stars, .bg-geometry {
+    overflow: hidden;
+}
 
 /* Improved mobile responsive design */
 @media (max-width: 768px) {
-  header {
-    padding: 15px;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    text-align: center;
-  }
+    header {
+        padding: 15px;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        text-align: center;
+    }
 
-  .logo {
-    width: auto;
-    height: auto;
-    max-width: 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+    .logo {
+        width: auto;
+        height: auto;
+        max-width: 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-  .logo-subtitle {
-    font-size: 20px;
-    margin-top: 4px;
-    white-space: normal;
-    word-break: break-word;
-    text-align: center;
-  }
+    .logo-subtitle {
+        font-size: 20px;
+        margin-top: 4px;
+        white-space: normal;
+        word-break: break-word;
+        text-align: center;
+    }
 
-  nav {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: nowrap;
-  }
+    nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: nowrap;
+    }
 
-  nav a {
-    display: block;
-    font-size: 16px;
-    padding: 6px 12px;
-  }
+    nav a {
+        display: block;
+        font-size: 16px;
+        padding: 6px 12px;
+    }
 
-  .resume-btn {
-    padding: 10px 20px;
-    font-size: 14px;
-  }
+    .resume-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
 
-  .hero {
-    padding: 60px 15px;
-  }
+    .hero {
+        padding: 60px 15px;
+    }
 
-  .hero h1 {
-    font-size: 2.2rem;
-    line-height: 1.2;
-  }
+    .hero h1 {
+        font-size: 2.2rem;
+        line-height: 1.2;
+    }
 
-  .learn-more-btn {
-    padding: 14px 28px;
-    font-size: 16px;
-  }
+    .learn-more-btn {
+        padding: 14px 28px;
+        font-size: 16px;
+    }
 
-  .content {
-    padding: 40px 15px;
-  }
+    .content {
+        padding: 40px 15px;
+    }
 
-  .section h2 {
-    font-size: 1.8rem;
-  }
+    .section h2 {
+        font-size: 1.8rem;
+    }
 
-  .about-grid {
-   flex-direction: column;
-   align-items: stretch;
-   gap: 20px;
-  }
-  .about-item {
-    min-height: auto;
-    padding: 20px;
-  }
+    /* Fix about grid for mobile */
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
 
-  .about-item h3 {
-    font-size: 1.3rem;
-  }
+    .about-item {
+        min-height: auto;
+        padding: 20px;
+    }
 
-  .experience-item {
-    width: 100%;
-    max-width: 100%;
-    padding: 20px;
-  }
+    .about-item h3 {
+        font-size: 1.3rem;
+    }
 
-  .contact-section {
-    width: 100%;
-    max-width: 100%;
-    padding: 30px 20px;
-  }
+    .experience-item {
+        width: 100%;
+        max-width: 100%;
+        padding: 20px;
+    }
 
-  .contact-links {
-    gap: 15px;
-  }
+    .contact-section {
+        width: 100%;
+        max-width: 100%;
+        padding: 30px 20px;
+    }
 
-  .contact-link {
-    padding: 10px 20px;
-    font-size: 14px;
-  }
-  .nav-wrapper {
-  width: 100%;
-  display: flex;
-  justify-content: center;
+    .contact-links {
+        gap: 15px;
+    }
+
+    .contact-link {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .learn-more-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    /* Mobile menu styles */
+    .mobile-menu-toggle {
+        display: block;
+    }
+
+    nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        background: rgba(26, 26, 26, 0.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        justify-content: center;
+        transition: right 0.3s ease;
+        z-index: 99;
+    }
+
+    nav.mobile-open {
+        right: 0;
+    }
 }
-.learn-more-btn {
-    padding: 10px 20px;
-    font-size: 14px;
-}
-}
+
 /* Additional breakpoint for very small phones */
 @media (max-width: 480px) {
     .hero h1 {
@@ -596,39 +866,92 @@ nav a:hover {
         text-align: center;
     }
 }
-
-
-/* Make sure background elements don't cause scrolling */
-.stars, .bg-geometry {
-    overflow: hidden;
-}
-/* 🔒 Global fix for all links and buttons to remove underlines and arrows */
-a,
-button,
-.resume-btn,
-.learn-more-btn,
-.contact-link,
-.btn-red {
-  text-decoration: none !important;
+/* CENTER ABOUT ME SECTION AND FIX TOOLS SPACING */
+#about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    text-align: center;
 }
 
-/* 🔪 Remove pseudo-elements that may insert arrows or style hints */
-a::after,
-a::before,
-button::after,
-button::before,
-.resume-btn::after,
-.resume-btn::before,
-.learn-more-btn::after,
-.learn-more-btn::before {
-  content: "" !important;
-  display: none !important;
-  text-decoration: none !important;
+#about .section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-nav a {
-  text-decoration: none !important;
-  text-underline-offset: 0.25em;
-  text-decoration-skip-ink: auto;
-  -webkit-text-decoration-skip: auto;
-  font-family: inherit; /* keep Anonymous Pro */
+
+/* Override the existing about-grid with better centering */
+.about-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(300px, 450px)) !important;
+    gap: 30px !important;
+    justify-content: center !important;
+    margin: 40px auto !important;
+    width: auto !important;
+    max-width: 960px !important;
 }
+
+/* Fix Tools & Technologies spacing - make it consistent */
+.about-item:nth-child(4) p {
+    margin-bottom: 10px !important;
+}
+
+.about-item:nth-child(4) p:last-child {
+    margin-bottom: 0 !important;
+}
+
+/* Make all paragraphs in about items have consistent spacing */
+.about-item p {
+    margin-bottom: 12px !important;
+    line-height: 1.6 !important;
+}
+
+.about-item p:last-child {
+    margin-bottom: 0 !important;
+}
+
+/* Fix the Tools section formatting */
+.about-item:nth-child(4) {
+    line-height: 1.8;
+}
+
+.about-item:nth-child(4) strong {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.about-item:nth-child(4) p:first-child strong {
+    margin-top: 0;
+}
+
+/* Ensure proper mobile responsiveness */
+@media (max-width: 768px) {
+    .about-grid {
+        grid-template-columns: 1fr !important;
+        width: 100% !important;
+    }
+}
+
+/* Move content closer to headers in all About cards */
+.about-item h3 {
+    margin-bottom: 10px !important; /* Reduce from 20px */
+}
+
+/* Specifically for Tools & Technologies card */
+.about-item:nth-child(4) h3 {
+    margin-bottom: 10px !important;
+}
+
+/* Ensure first paragraph starts close to header */
+.about-item:nth-child(4) p:first-of-type {
+    margin-top: 0 !important;
+}
+
+/* Optional: Apply to all about items for consistency */
+.about-item p:first-of-type {
+    margin-top: 0 !important;
+}
+
