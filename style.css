@@ -1,4 +1,15 @@
 /* Reset and base styles */
+/* Remove underlines and pseudo-element icons/arrows from all anchor tags */
+a {
+    text-decoration: none !important;
+}
+
+a::before,
+a::after {
+    content: none !important;
+    display: none !important;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -456,7 +467,7 @@ nav a:hover {
   }
 
   .logo-subtitle {
-    font-size: 14px;
+    font-size: 20px;
     margin-top: 4px;
     white-space: normal;
     word-break: break-word;
