@@ -954,4 +954,19 @@ footer {
 .about-item p:first-of-type {
     margin-top: 0 !important;
 }
+/* Force bigger logo on desktop - add at VERY END */
+@media (min-width: 769px) {
+    header .logo {
+        width: 200px !important;  /* Even bigger */
+        height: 120px !important;
+    }
 
+    header .logo svg {
+        width: 100% !important;
+        height: 80px !important;  /* Adjust SVG height */
+    }
+
+    header .logo-subtitle {
+        font-size: 26px !important;  /* Even bigger text */
+    }
+}
