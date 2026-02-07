@@ -1,113 +1,32 @@
 /* Reset and base styles */
-/* Remove underlines and pseudo-element icons/arrows from all anchor tags */
-/* ADD THIS TO THE TOP OF YOUR CSS FILE - MOST AGGRESSIVE UNDERLINE REMOVAL */
-
-/* Force remove ALL underlines from every possible element */
-*, *::before, *::after {
-    text-decoration: none !important;
-    text-decoration-line: none !important;
-    text-decoration-color: transparent !important;
-    text-decoration-style: none !important;
-    text-underline-offset: none !important;
-    text-underline-position: none !important;
-    -webkit-text-decoration: none !important;
-    -moz-text-decoration: none !important;
-    -ms-text-decoration: none !important;
-    -o-text-decoration: none !important;
-}
-
-/* Target all possible link states */
-a, a:link, a:visited, a:hover, a:active, a:focus, a:focus-visible, a:focus-within,
-button, button:hover, button:focus, button:active,
-nav a, nav a:hover, nav a:visited,
-.contact-link, .contact-link:hover, .contact-link:visited,
-.btn-red, .btn-red:hover, .btn-red:visited,
-.resume-btn, .resume-btn:hover, .resume-btn:visited,
-.learn-more-btn, .learn-more-btn:hover {
-    text-decoration: none !important;
-    text-decoration-line: none !important;
-    border: none !important;
-    border-bottom: none !important;
-    outline: none !important;
-    -webkit-text-decoration: none !important;
-    -webkit-text-decoration-line: none !important;
-}
-
-/* Browser-specific fixes */
-@supports (-webkit-appearance: none) {
-    a { -webkit-text-decoration-skip: objects !important; }
-}
-
-/* FIX ABOUT ME SECTION CENTERING AND LAYOUT */
-#about {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.about-grid {
-    display: grid !important;
-    grid-template-columns: repeat(2, minmax(300px, 1fr)) !important;
-    gap: 30px !important;
-    margin: 40px auto !important;
-    max-width: 900px !important;
-    width: 100% !important;
-    padding: 0 20px !important;
-}
-
-.about-item {
-    background: rgba(255, 255, 255, 0.05) !important;
-    padding: 30px !important;
-    border-radius: 12px !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    backdrop-filter: blur(10px) !important;
-    min-height: 280px !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-}
-
-/* Center the content container */
-.content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
-
-.section {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto 80px auto;
-}
-
-/* Mobile responsive fix */
-@media (max-width: 768px) {
-    .about-grid {
-        grid-template-columns: 1fr !important;
-        padding: 0 !important;
-    }
-}
-
-
-
-
-a {
-    text-decoration: none !important;
-}
-
-a::before,
-a::after {
-    content: none !important;
-    display: none !important;
-}
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Link and button defaults */
+a,
+a:link,
+a:visited,
+a:hover,
+a:active,
+button {
+    text-decoration: none;
+}
+
+a::before,
+a::after {
+    content: none;
+    display: none;
+}
+
+/* Focus styles for accessibility */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid #5AB4FF;
+    outline-offset: 2px;
+}
 body {
     font-family: 'Anonymous Pro', 'Courier New', monospace;
     background: linear-gradient(135deg, #2f2f2f 0%, #1a1a1a 50%, #0d0d0d 100%);
@@ -376,12 +295,12 @@ nav a:hover {
 /* About section - FIXED 2x2 GRID */
 .about-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(300px, 450px));
     gap: 30px;
-    margin-top: 40px;
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 40px auto;
+    width: 100%;
+    max-width: 960px;
+    justify-content: center;
 }
 
 .about-item {
@@ -518,67 +437,6 @@ nav a:hover {
 .btn-red:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 25px rgba(251, 86, 86, 0.3);
-}
-
-/* Complete underline removal - aggressive rules */
-* {
-    text-decoration: none !important;
-    text-underline-position: none !important;
-}
-
-a:link,
-a:visited,
-a:hover,
-a:active,
-a:focus,
-a:focus-visible,
-a:focus-within {
-    text-decoration: none !important;
-    text-decoration-line: none !important;
-    text-decoration-style: none !important;
-    border-bottom: none !important;
-    outline: none !important;
-}
-
-/* Remove any possible underlines from specific elements */
-.contact-link,
-.contact-link:hover,
-.contact-link:visited,
-.contact-link:active,
-.contact-link:focus {
-    text-decoration: none !important;
-    border: none !important;
-    outline: none !important;
-}
-
-/* 🔒 Global fix for all links and buttons to remove underlines and arrows */
-a,
-button,
-.resume-btn,
-.learn-more-btn,
-.contact-link,
-.btn-red {
-    text-decoration: none !important;
-}
-
-/* 🔪 Remove pseudo-elements that may insert arrows or style hints */
-a::after,
-a::before,
-button::after,
-button::before,
-.resume-btn::after,
-.resume-btn::before,
-.learn-more-btn::after,
-.learn-more-btn::before {
-    content: "" !important;
-    display: none !important;
-    text-decoration: none !important;
-}
-
-nav a {
-    text-decoration: none !important;
-    text-underline: none !important;
-    -webkit-text-decoration: none !important;
 }
 
 /* Hero subtitle */
@@ -866,33 +724,6 @@ footer {
         text-align: center;
     }
 }
-/* CENTER ABOUT ME SECTION AND FIX TOOLS SPACING */
-#about {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    text-align: center;
-}
-
-#about .section {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Override the existing about-grid with better centering */
-.about-grid {
-    display: grid !important;
-    grid-template-columns: repeat(2, minmax(300px, 450px)) !important;
-    gap: 30px !important;
-    justify-content: center !important;
-    margin: 40px auto !important;
-    width: auto !important;
-    max-width: 960px !important;
-}
-
 /* Fix Tools & Technologies spacing - make it consistent */
 .about-item:nth-child(4) p {
     margin-bottom: 10px !important;
@@ -968,5 +799,15 @@ footer {
 
     header .logo-subtitle {
         font-size: 26px !important;  /* Even bigger text */
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
     }
 }

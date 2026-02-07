@@ -2,6 +2,7 @@
 function createStars() {
     const starsContainer = document.getElementById('stars');
     const starCount = 100;
+    const fragment = document.createDocumentFragment();
 
     for (let i = 0; i < starCount; i++) {
         const star = document.createElement('div');
@@ -9,8 +10,10 @@ function createStars() {
         star.style.left = Math.random() * 100 + '%';
         star.style.top = Math.random() * 100 + '%';
         star.style.animationDelay = Math.random() * 3 + 's';
-        starsContainer.appendChild(star);
+        fragment.appendChild(star);
     }
+
+    starsContainer.appendChild(fragment);
 }
 
 // Smooth scrolling function
@@ -52,6 +55,58 @@ function initNavigation() {
             e.preventDefault();
             const targetId = link.getAttribute('href').substring(1);
             scrollToSection(targetId);
+        });
+    });
+}
+
+// Scroll to top helper
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Mobile menu toggle handler
+function initMobileMenu() {
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const nav = document.querySelector('nav');
+
+    mobileMenuToggle?.addEventListener('click', () => {
+        nav.classList.toggle('mobile-open');
+        const isOpen = nav.classList.contains('mobile-open');
+        mobileMenuToggle.setAttribute('aria-expanded', isOpen);
+    });
+}
+
+// Back to top button visibility
+function initBackToTop() {
+    const backToTop = document.querySelector('.back-to-top');
+    if (!backToTop) {
+        return;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
+}
+
+// Loading screen removal
+function initLoadingScreen() {
+    window.addEventListener('load', () => {
+        document.body.classList.add('loaded');
+        setTimeout(() => {
+            document.querySelector('.loading-screen')?.remove();
+        }, 500);
+    });
+}
+
+// Hook for external link tracking (optional)
+function initExternalLinkTracking() {
+    document.querySelectorAll('a[target="_blank"]').forEach(link => {
+        link.addEventListener('click', () => {
+            // Reserved for analytics tracking
         });
     });
 }
@@ -120,6 +175,10 @@ document.addEventListener('DOMContentLoaded', function() {
     createStars();
     initScrollAnimations();
     initNavigation();
+    initMobileMenu();
+    initBackToTop();
+    initLoadingScreen();
+    initExternalLinkTracking();
 
     // Enhanced effects
     addFloatingAnimation();
@@ -130,30 +189,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Optional: Add parallax (comment out if performance is an issue)
     // initParallax();
 
-    console.log('Portfolio loaded successfully! 🚀');
 });
-
-// Utility function for smooth reveal animations
-function revealOnScroll() {
-    const reveals = document.querySelectorAll('.section');
-
-    reveals.forEach(element => {
-        const windowHeight = window.innerHeight;
-        const elementTop = element.getBoundingClientRect().top;
-        const elementVisible = 150;
-
-        if (elementTop < windowHeight - elementVisible) {
-            element.classList.add('visible');
-        }
-    });
-}
-
-// Add scroll event listener for additional effects
-window.addEventListener('scroll', revealOnScroll);
 
 // Export functions for potential external use
 window.portfolioFunctions = {
     scrollToSection,
+    scrollToTop,
     createStars,
     initScrollAnimations
 };
+
+window.scrollToSection = scrollToSection;
+window.scrollToTop = scrollToTop;

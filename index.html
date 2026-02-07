@@ -191,55 +191,5 @@
     </footer>
 
     <script src="script.js"></script>
-    <script>
-        // Smooth scrolling function
-        function scrollToSection(id) {
-            const section = document.getElementById(id);
-            if (section) {
-                section.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        // Scroll to top function
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Show/hide back to top button
-        window.addEventListener('scroll', () => {
-            const backToTop = document.querySelector('.back-to-top');
-            if (window.pageYOffset > 300) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        });
-
-        // Mobile menu toggle
-        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-        const nav = document.querySelector('nav');
-
-        mobileMenuToggle?.addEventListener('click', () => {
-            nav.classList.toggle('mobile-open');
-            const isOpen = nav.classList.contains('mobile-open');
-            mobileMenuToggle.setAttribute('aria-expanded', isOpen);
-        });
-
-        // Loading screen
-        window.addEventListener('load', () => {
-            document.body.classList.add('loaded');
-            setTimeout(() => {
-                document.querySelector('.loading-screen')?.remove();
-            }, 500);
-        });
-
-        // Add error handling for external links
-        document.querySelectorAll('a[target="_blank"]').forEach(link => {
-            link.addEventListener('click', (e) => {
-                // Can add analytics tracking here
-                console.log('External link clicked:', link.href);
-            });
-        });
-    </script>
 </body>
 </html>
