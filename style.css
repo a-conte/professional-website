@@ -27,6 +27,7 @@ button:focus-visible {
     outline: 2px solid #5AB4FF;
     outline-offset: 2px;
 }
+
 body {
     font-family: 'Anonymous Pro', 'Courier New', monospace;
     background: linear-gradient(135deg, #2f2f2f 0%, #1a1a1a 50%, #0d0d0d 100%);
@@ -34,6 +35,8 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
+    line-height: 1.8;
+    letter-spacing: 0.02em;
 
     /* Font smoothing for better text rendering */
     -webkit-font-smoothing: antialiased;
@@ -164,22 +167,23 @@ nav {
 nav a {
     color: #E6D7C3;
     text-decoration: none;
-    font-size: 20px;
-    font-weight: bold;
-    padding: 12px 20px;
+    font-size: 18px; /* Slightly smaller for minimalism */
+    font-weight: 600;
+    padding: 10px 16px;
     border-radius: 6px;
     transition: all 0.3s ease;
+    opacity: 0.8; /* Subtle default state */
 }
 
 nav a:hover {
-    background: rgba(255, 255, 255, 0.1);
-    opacity: 0.9;
+    background: rgba(255, 255, 255, 0.05);
+    opacity: 1;
     text-decoration: none;
 }
 
 .resume-btn {
     background: linear-gradient(135deg, #FB5656, #FB5656);
-    padding: 12px 24px;
+    padding: 10px 20px; /* Refined padding */
     border-radius: 8px;
     text-decoration: none;
     color: #E6D7C3;
@@ -188,6 +192,8 @@ nav a:hover {
     display: flex;
     align-items: center;
     gap: 8px;
+    font-size: 16px; /* Match nav links */
+    opacity: 1 !important; /* Force opacity for CTA */
 }
 
 .resume-btn:hover {
@@ -202,22 +208,22 @@ nav a:hover {
     position: relative;
     z-index: 10;
     text-align: center;
-    padding: 80px 30px 60px;
+    padding: 140px 30px 100px; /* More breathing room */
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .hero-content {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
 .hero h1 {
-    font-size: clamp(2rem, 6vw, 3.5rem);
-    font-weight: 600;
-    line-height: 1.4;
+    font-size: clamp(3rem, 6vw, 4.5rem); /* Larger, bolder */
+    font-weight: 700;
+    line-height: 1.1;
     margin-bottom: 24px;
-    letter-spacing: 0.025em;
+    letter-spacing: -0.03em;
 }
 
 .hero h1 .highlight {
@@ -226,14 +232,26 @@ nav a:hover {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    font-weight: 600;
+    font-weight: 700;
+}
+
+.hero-subtitle {
+    display: block;
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    margin-top: 24px;
+    font-weight: 400;
+    opacity: 0.85;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
 }
 
 .learn-more-btn {
     background: linear-gradient(135deg, #FB5656, #FB5656);
     border: none;
-    padding: 12px 24px;
-    border-radius: 40px;
+    padding: 14px 32px;
+    border-radius: 50px;
     color: #E6D7C3;
     font-size: 16px;
     font-weight: bold;
@@ -242,7 +260,7 @@ nav a:hover {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
 .learn-more-btn:hover {
@@ -254,16 +272,15 @@ nav a:hover {
 .content {
     position: relative;
     z-index: 10;
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 80px 40px;
+    padding: 100px 40px;
 }
 
 .section {
-    margin-bottom: 80px;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 140px auto; /* Increased spacing */
 }
 
 .section.visible {
@@ -272,11 +289,11 @@ nav a:hover {
 }
 
 .section h2 {
-    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    font-size: clamp(2rem, 4vw, 2.5rem);
     font-weight: bold;
-    margin-bottom: 40px;
+    margin-bottom: 60px;
     text-align: center;
-    letter-spacing: 0.025em;
+    letter-spacing: -0.02em;
 }
 
 /* Section header colors */
@@ -295,40 +312,46 @@ nav a:hover {
 /* About section - FIXED 2x2 GRID */
 .about-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(300px, 450px));
-    gap: 30px;
+    grid-template-columns: repeat(2, minmax(300px, 480px));
+    gap: 40px; /* Increased gap */
     margin: 40px auto;
     width: 100%;
-    max-width: 960px;
+    max-width: 1000px;
     justify-content: center;
 }
 
 .about-item {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 30px;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    min-height: 300px;
+    background: rgba(255, 255, 255, 0.03); /* More transparent */
+    padding: 40px;
+    border-radius: 24px; /* Softer corners */
+    border: 1px solid rgba(255, 255, 255, 0.05); /* Subtler border */
+    backdrop-filter: blur(20px);
+    min-height: 320px;
     display: flex;
     flex-direction: column;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.about-item:hover {
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateY(-5px);
 }
 
 .about-item h3 {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     color: #FB5656;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
     -webkit-text-fill-color: initial;
     background: none;
 }
 
 .about-item p {
     font-size: 1.1rem;
-    line-height: 1.6;
+    line-height: 1.8;
     opacity: 0.9;
     color: #E6D7C3;
-    margin-bottom: 15px;
+    margin-bottom: 16px;
     -webkit-text-fill-color: initial;
     background: none;
 }
@@ -346,36 +369,45 @@ nav a:hover {
 .experience-container {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .experience-item {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 30px;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.03);
+    padding: 40px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
     text-align: center;
-    width: 600px;
+    width: 700px; /* Slightly wider */
     margin: 0;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.experience-item:hover {
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateY(-5px);
 }
 
 .job-title {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-weight: 600;
-    margin-bottom: 8px;
-    letter-spacing: 0.03em;
+    margin-bottom: 10px;
+    letter-spacing: 0.02em;
 }
 
 .company {
     color: #FB5656;
     font-weight: 500;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
 }
 
 .duration {
-    opacity: 0.7;
-    font-size: 0.9rem;
+    opacity: 0.6;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
 }
 
 /* Contact section - uniform size, centered */
@@ -386,19 +418,19 @@ nav a:hover {
 
 .contact-section {
     text-align: center;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 40px;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    width: 600px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 60px 40px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    width: 700px;
 }
 
 .contact-links {
     display: flex;
     justify-content: center;
     gap: 20px;
-    margin-top: 30px;
+    margin-top: 40px;
     flex-wrap: wrap;
 }
 
@@ -406,11 +438,12 @@ nav a:hover {
     background: linear-gradient(135deg, #FB5656, #FB5656);
     color: #E6D7C3;
     text-decoration: none;
-    padding: 12px 24px;
+    padding: 14px 32px;
     border-radius: 50px;
     border: none;
     transition: all 0.3s ease;
     font-weight: bold;
+    font-size: 16px;
 }
 
 .contact-link:hover {
@@ -437,14 +470,6 @@ nav a:hover {
 .btn-red:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 25px rgba(251, 86, 86, 0.3);
-}
-
-/* Hero subtitle */
-.hero-subtitle {
-    display: block;
-    font-size: clamp(1.2rem, 3vw, 1.8rem);
-    margin-top: 10px;
-    font-weight: 400;
 }
 
 /* Loading Screen */
@@ -532,11 +557,12 @@ body.loaded .loading-screen {
 /* Footer */
 footer {
     text-align: center;
-    padding: 40px 20px;
-    opacity: 0.6;
+    padding: 60px 20px;
+    opacity: 0.5;
     font-size: 0.9rem;
     position: relative;
     z-index: 10;
+    letter-spacing: 0.05em;
 }
 
 /* Arrow down in Learn More button */
@@ -585,41 +611,46 @@ footer {
     nav {
         flex-direction: column;
         align-items: center;
-        gap: 10px;
+        gap: 15px;
         flex-wrap: nowrap;
     }
 
     nav a {
         display: block;
-        font-size: 16px;
-        padding: 6px 12px;
+        font-size: 18px;
+        padding: 8px 16px;
     }
 
     .resume-btn {
-        padding: 10px 20px;
-        font-size: 14px;
+        padding: 12px 24px;
+        font-size: 16px;
     }
 
     .hero {
-        padding: 60px 15px;
+        padding: 100px 20px 60px;
     }
 
     .hero h1 {
-        font-size: 2.2rem;
+        font-size: 2.5rem;
         line-height: 1.2;
     }
 
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
     .learn-more-btn {
-        padding: 14px 28px;
+        padding: 12px 28px;
         font-size: 16px;
     }
 
     .content {
-        padding: 40px 15px;
+        padding: 60px 20px;
     }
 
     .section h2 {
-        font-size: 1.8rem;
+        font-size: 2rem;
+        margin-bottom: 40px;
     }
 
     /* Fix about grid for mobile */
@@ -630,7 +661,7 @@ footer {
 
     .about-item {
         min-height: auto;
-        padding: 20px;
+        padding: 30px;
     }
 
     .about-item h3 {
@@ -640,13 +671,13 @@ footer {
     .experience-item {
         width: 100%;
         max-width: 100%;
-        padding: 20px;
+        padding: 30px;
     }
 
     .contact-section {
         width: 100%;
         max-width: 100%;
-        padding: 30px 20px;
+        padding: 40px 20px;
     }
 
     .contact-links {
@@ -654,13 +685,8 @@ footer {
     }
 
     .contact-link {
-        padding: 10px 20px;
-        font-size: 14px;
-    }
-
-    .learn-more-btn {
-        padding: 10px 20px;
-        font-size: 14px;
+        padding: 12px 24px;
+        font-size: 15px;
     }
 
     /* Mobile menu styles */
@@ -690,15 +716,15 @@ footer {
 /* Additional breakpoint for very small phones */
 @media (max-width: 480px) {
     .hero h1 {
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
 
     .section h2 {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
     }
 
     .about-item {
-        padding: 15px;
+        padding: 24px;
     }
 
     .about-item h3 {
@@ -706,11 +732,11 @@ footer {
     }
 
     .experience-item {
-        padding: 15px;
+        padding: 24px;
     }
 
     .contact-section {
-        padding: 20px 15px;
+        padding: 30px 20px;
     }
 
     .contact-links {
@@ -720,10 +746,11 @@ footer {
 
     .contact-link {
         width: 100%;
-        max-width: 200px;
+        max-width: 240px;
         text-align: center;
     }
 }
+
 /* Fix Tools & Technologies spacing - make it consistent */
 .about-item:nth-child(4) p {
     margin-bottom: 10px !important;
@@ -735,8 +762,8 @@ footer {
 
 /* Make all paragraphs in about items have consistent spacing */
 .about-item p {
-    margin-bottom: 12px !important;
-    line-height: 1.6 !important;
+    margin-bottom: 16px !important;
+    line-height: 1.8 !important;
 }
 
 .about-item p:last-child {
@@ -768,12 +795,12 @@ footer {
 
 /* Move content closer to headers in all About cards */
 .about-item h3 {
-    margin-bottom: 10px !important; /* Reduce from 20px */
+    margin-bottom: 16px !important;
 }
 
 /* Specifically for Tools & Technologies card */
 .about-item:nth-child(4) h3 {
-    margin-bottom: 10px !important;
+    margin-bottom: 16px !important;
 }
 
 /* Ensure first paragraph starts close to header */
@@ -785,6 +812,7 @@ footer {
 .about-item p:first-of-type {
     margin-top: 0 !important;
 }
+
 /* Force bigger logo on desktop - add at VERY END */
 @media (min-width: 769px) {
     header .logo {
