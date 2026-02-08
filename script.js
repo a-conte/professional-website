@@ -32,9 +32,10 @@ function scrollToSection(sectionId) {
             behavior: 'smooth',
             block: 'start'
         });
-        // Focus the target section for accessibility
+        // Focus the target section for accessibility, then restore natural tab order
         element.setAttribute('tabindex', '-1');
         element.focus({ preventScroll: true });
+        element.addEventListener('blur', () => element.removeAttribute('tabindex'), { once: true });
     }
 }
 

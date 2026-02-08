@@ -3,9 +3,9 @@
     --color-accent-red: #FB5656;
     --color-accent-blue: #4A9EFF;
     --color-text: #E6D7C3;
+    --color-bg: #1a1a1a;
     --color-bg-card: rgba(255, 255, 255, 0.03);
     --gradient-blue: linear-gradient(135deg, #5AB4FF, #379BFF);
-    --gradient-red: linear-gradient(135deg, #FB5656, #FB5656);
     --radius-sm: 8px;
     --radius-lg: 24px;
     --radius-pill: 50px;
@@ -41,6 +41,23 @@ button:focus-visible {
     outline-offset: 2px;
 }
 
+/* Skip to content link for screen readers */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 16px;
+    z-index: 10000;
+    padding: 8px 16px;
+    background: var(--color-accent-blue);
+    color: #fff;
+    border-radius: var(--radius-sm);
+    font-weight: bold;
+}
+
+.skip-link:focus {
+    top: 16px;
+}
+
 /* Focus-visible for red buttons */
 .learn-more-btn:focus-visible,
 .resume-btn:focus-visible,
@@ -53,7 +70,7 @@ button:focus-visible {
 
 body {
     font-family: 'Anonymous Pro', 'Courier New', monospace;
-    background: linear-gradient(135deg, #2f2f2f 0%, #1a1a1a 50%, #0d0d0d 100%);
+    background: linear-gradient(135deg, #2f2f2f 0%, var(--color-bg) 50%, #0d0d0d 100%);
     color: var(--color-text);
     min-height: 100vh;
     overflow-x: hidden;
@@ -208,7 +225,7 @@ nav a:not(.btn-red):hover {
 }
 
 .resume-btn {
-    background: var(--gradient-red);
+    background: var(--color-accent-red);
     padding: 10px 20px;
     border-radius: var(--radius-sm);
     text-decoration: none;
@@ -219,12 +236,6 @@ nav a:not(.btn-red):hover {
     align-items: center;
     gap: 8px;
     font-size: 16px;
-}
-
-.resume-btn:hover {
-    background: var(--gradient-red);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(251, 86, 86, 0.3);
 }
 
 /* Main hero section */
@@ -267,7 +278,7 @@ nav a:not(.btn-red):hover {
 }
 
 .learn-more-btn {
-    background: var(--gradient-red);
+    background: var(--color-accent-red);
     border: none;
     padding: 14px 32px;
     border-radius: var(--radius-pill);
@@ -471,7 +482,7 @@ nav a:not(.btn-red):hover {
 }
 
 .contact-link {
-    background: var(--gradient-red);
+    background: var(--color-accent-red);
     color: var(--color-text);
     text-decoration: none;
     padding: 14px 32px;
@@ -482,15 +493,9 @@ nav a:not(.btn-red):hover {
     font-size: 16px;
 }
 
-.contact-link:hover {
-    background: var(--gradient-red);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(251, 86, 86, 0.3);
-}
-
 /* Utility button class for red buttons — no !important needed */
 .btn-red {
-    background: var(--gradient-red);
+    background: var(--color-accent-red);
     color: var(--color-text);
     -webkit-text-fill-color: var(--color-text);
     border-radius: var(--radius-pill);
@@ -515,7 +520,7 @@ nav a:not(.btn-red):hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: #1a1a1a;
+    background: var(--color-bg);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -599,17 +604,6 @@ footer {
     position: relative;
     z-index: 10;
     letter-spacing: 0.05em;
-}
-
-/* Arrow down in Learn More button */
-.arrow-down {
-    margin-left: 5px;
-    display: inline-block;
-    transition: transform 0.3s ease;
-}
-
-.learn-more-btn:hover .arrow-down {
-    transform: translateY(2px);
 }
 
 /* Make sure background elements don't cause scrolling */
