@@ -389,11 +389,11 @@ nav a:not(.btn-red):hover {
 
 .about-item--tools strong {
     display: block;
-    margin-top: 10px;
-    margin-bottom: 5px;
+    margin-top: 12px;
+    margin-bottom: 2px;
 }
 
-.about-item--tools p:first-child strong {
+.about-item--tools strong:first-child {
     margin-top: 0;
 }
 
