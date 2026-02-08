@@ -1,3 +1,16 @@
+/* CSS Custom Properties */
+:root {
+    --color-accent-red: #FB5656;
+    --color-accent-blue: #4A9EFF;
+    --color-text: #E6D7C3;
+    --color-bg-card: rgba(255, 255, 255, 0.03);
+    --gradient-blue: linear-gradient(135deg, #5AB4FF, #379BFF);
+    --gradient-red: linear-gradient(135deg, #FB5656, #FB5656);
+    --radius-sm: 8px;
+    --radius-lg: 24px;
+    --radius-pill: 50px;
+}
+
 /* Reset and base styles */
 * {
     margin: 0;
@@ -28,10 +41,20 @@ button:focus-visible {
     outline-offset: 2px;
 }
 
+/* Focus-visible for red buttons */
+.learn-more-btn:focus-visible,
+.resume-btn:focus-visible,
+.contact-link:focus-visible,
+.btn-red:focus-visible {
+    outline: 2px solid #5AB4FF;
+    outline-offset: 4px;
+    box-shadow: 0 0 0 4px rgba(90, 180, 255, 0.3);
+}
+
 body {
     font-family: 'Anonymous Pro', 'Courier New', monospace;
     background: linear-gradient(135deg, #2f2f2f 0%, #1a1a1a 50%, #0d0d0d 100%);
-    color: #E6D7C3;
+    color: var(--color-text);
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
@@ -49,21 +72,18 @@ img, svg, video {
     height: auto;
 }
 
-/* Fix gradient text inconsistencies */
-.highlight {
-    background: linear-gradient(135deg, #5AB4FF, #379BFF);
+/* Consolidated gradient text — single reusable rule */
+.gradient-text,
+.highlight,
+.section h2 {
+    background: var(--gradient-blue);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    color: #4A9EFF; /* fallback */
+    color: var(--color-accent-blue); /* fallback */
 }
 
 .section h2 {
-    background: linear-gradient(135deg, #5AB4FF, #379BFF);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: #4A9EFF; /* fallback */
     font-weight: bold;
 }
 
@@ -149,12 +169,12 @@ header {
 .logo svg {
     width: 100%;
     height: 100%;
-    fill: #E6D7C3;
+    fill: var(--color-text);
 }
 
 .logo-subtitle {
     font-size: 24px;
-    color: #E6D7C3;
+    color: var(--color-text);
     text-align: center;
     margin-top: 4px;
     font-weight: bold;
@@ -169,41 +189,40 @@ nav {
     align-items: center;
 }
 
-nav a {
-    color: #E6D7C3;
+/* Scope nav link opacity to exclude buttons */
+nav a:not(.btn-red) {
+    color: var(--color-text);
     text-decoration: none;
-    font-size: 18px; /* Slightly smaller for minimalism */
+    font-size: 18px;
     font-weight: 600;
     padding: 10px 16px;
     border-radius: 6px;
     transition: all 0.3s ease;
-    opacity: 0.8; /* Subtle default state */
+    opacity: 0.8;
 }
 
-nav a:hover {
+nav a:not(.btn-red):hover {
     background: rgba(255, 255, 255, 0.05);
     opacity: 1;
     text-decoration: none;
 }
 
 .resume-btn {
-    background: linear-gradient(135deg, #FB5656, #FB5656);
-    padding: 10px 20px; /* Refined padding */
-    border-radius: 8px;
+    background: var(--gradient-red);
+    padding: 10px 20px;
+    border-radius: var(--radius-sm);
     text-decoration: none;
-    color: #E6D7C3;
+    color: var(--color-text);
     font-weight: bold;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 16px; /* Match nav links */
-    opacity: 1 !important; /* Force opacity for CTA */
+    font-size: 16px;
 }
 
 .resume-btn:hover {
-    opacity: 1;
-    background: linear-gradient(135deg, #FB5656, #FB5656);
+    background: var(--gradient-red);
     transform: translateY(-2px);
     box-shadow: 0 10px 25px rgba(251, 86, 86, 0.3);
 }
@@ -213,7 +232,7 @@ nav a:hover {
     position: relative;
     z-index: 10;
     text-align: center;
-    padding: 140px 30px 100px; /* More breathing room */
+    padding: 140px 30px 100px;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -224,7 +243,7 @@ nav a:hover {
 }
 
 .hero h1 {
-    font-size: clamp(3rem, 6vw, 4.5rem); /* Larger, bolder */
+    font-size: clamp(3rem, 6vw, 4.5rem);
     font-weight: 700;
     line-height: 1.1;
     margin-bottom: 24px;
@@ -232,11 +251,6 @@ nav a:hover {
 }
 
 .hero h1 .highlight {
-    color: #4A9EFF; /* fallback for unsupported browsers */
-    background: linear-gradient(135deg, #5AB4FF, #379BFF);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
     font-weight: 700;
 }
 
@@ -253,11 +267,11 @@ nav a:hover {
 }
 
 .learn-more-btn {
-    background: linear-gradient(135deg, #FB5656, #FB5656);
+    background: var(--gradient-red);
     border: none;
     padding: 14px 32px;
-    border-radius: 50px;
-    color: #E6D7C3;
+    border-radius: var(--radius-pill);
+    color: var(--color-text);
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
@@ -285,7 +299,7 @@ nav a:hover {
 .section {
     width: 100%;
     max-width: 1200px;
-    margin: 0 auto 140px auto; /* Increased spacing */
+    margin: 0 auto 140px auto;
 }
 
 .section.visible {
@@ -295,30 +309,16 @@ nav a:hover {
 
 .section h2 {
     font-size: clamp(2rem, 4vw, 2.5rem);
-    font-weight: bold;
     margin-bottom: 60px;
     text-align: center;
     letter-spacing: -0.02em;
 }
 
-/* Section header colors */
-#about h2,
-#experience h2,
-#contact h2 {
-    color: #4A9EFF; /* fallback */
-    background: linear-gradient(135deg, #5AB4FF, #379BFF);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-weight: bold;
-    text-align: center;
-}
-
-/* About section - FIXED 2x2 GRID */
+/* About section */
 .about-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(300px, 480px));
-    gap: 40px; /* Increased gap */
+    gap: 40px;
     margin: 40px auto;
     width: 100%;
     max-width: 1000px;
@@ -326,10 +326,10 @@ nav a:hover {
 }
 
 .about-item {
-    background: rgba(255, 255, 255, 0.03); /* More transparent */
+    background: var(--color-bg-card);
     padding: 30px;
-    border-radius: 24px; /* Softer corners */
-    border: 1px solid rgba(255, 255, 255, 0.05); /* Subtler border */
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(20px);
     min-height: 320px;
     display: flex;
@@ -344,9 +344,9 @@ nav a:hover {
 
 .about-item h3 {
     font-size: 1.4rem;
-    color: #FB5656;
+    color: var(--color-accent-red);
     font-weight: bold;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
     -webkit-text-fill-color: initial;
     background: none;
 }
@@ -355,7 +355,7 @@ nav a:hover {
     font-size: 1.1rem;
     line-height: 1.8;
     opacity: 0.9;
-    color: #E6D7C3;
+    color: var(--color-text);
     margin-bottom: 16px;
     -webkit-text-fill-color: initial;
     background: none;
@@ -365,12 +365,43 @@ nav a:hover {
     margin-bottom: 0;
 }
 
+.about-item p:first-of-type {
+    margin-top: 0;
+}
+
 .about-item strong {
-    color: #E6D7C3;
+    color: var(--color-text);
     font-weight: 600;
 }
 
-/* Experience section - uniform sized boxes, centered */
+/* Tools & Technologies card — descriptive class replaces nth-child(4) */
+.about-item--tools {
+    line-height: 1.8;
+}
+
+.about-item--tools p {
+    margin-bottom: 10px;
+}
+
+.about-item--tools p:last-child {
+    margin-bottom: 0;
+}
+
+.about-item--tools strong {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.about-item--tools p:first-child strong {
+    margin-top: 0;
+}
+
+.about-item--tools p:first-of-type {
+    margin-top: 0;
+}
+
+/* Experience section */
 .experience-container {
     display: flex;
     justify-content: center;
@@ -378,13 +409,13 @@ nav a:hover {
 }
 
 .experience-item {
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--color-bg-card);
     padding: 40px;
-    border-radius: 24px;
+    border-radius: var(--radius-lg);
     border: 1px solid rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(20px);
     text-align: center;
-    width: 700px; /* Slightly wider */
+    width: 700px;
     margin: 0;
     transition: transform 0.3s ease, background 0.3s ease;
 }
@@ -402,20 +433,20 @@ nav a:hover {
 }
 
 .company {
-    color: #FB5656;
+    color: var(--color-accent-red);
     font-weight: 500;
     margin-bottom: 8px;
     font-size: 1.1rem;
 }
 
 .duration {
-    opacity: 0.6;
+    opacity: 0.7;
     font-size: 0.95rem;
     letter-spacing: 0.05em;
     text-transform: uppercase;
 }
 
-/* Contact section - uniform size, centered */
+/* Contact section */
 .contact-wrapper {
     display: flex;
     justify-content: center;
@@ -423,9 +454,9 @@ nav a:hover {
 
 .contact-section {
     text-align: center;
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--color-bg-card);
     padding: 60px 40px;
-    border-radius: 24px;
+    border-radius: var(--radius-lg);
     border: 1px solid rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(20px);
     width: 700px;
@@ -440,11 +471,11 @@ nav a:hover {
 }
 
 .contact-link {
-    background: linear-gradient(135deg, #FB5656, #FB5656);
-    color: #E6D7C3;
+    background: var(--gradient-red);
+    color: var(--color-text);
     text-decoration: none;
     padding: 14px 32px;
-    border-radius: 50px;
+    border-radius: var(--radius-pill);
     border: none;
     transition: all 0.3s ease;
     font-weight: bold;
@@ -452,17 +483,17 @@ nav a:hover {
 }
 
 .contact-link:hover {
-    background: linear-gradient(135deg, #FB5656, #FB5656);
+    background: var(--gradient-red);
     transform: translateY(-2px);
     box-shadow: 0 10px 25px rgba(251, 86, 86, 0.3);
 }
 
-/* Utility button class for red buttons */
+/* Utility button class for red buttons — no !important needed */
 .btn-red {
-    background: linear-gradient(135deg, #FB5656, #FB5656) !important;
-    color: #E6D7C3 !important;
-    -webkit-text-fill-color: #E6D7C3 !important;
-    border-radius: 50px;
+    background: var(--gradient-red);
+    color: var(--color-text);
+    -webkit-text-fill-color: var(--color-text);
+    border-radius: var(--radius-pill);
     padding: 12px 24px;
     font-weight: bold;
     display: inline-flex;
@@ -501,7 +532,7 @@ body.loaded .loading-screen {
     width: 50px;
     height: 50px;
     border: 3px solid rgba(255, 255, 255, 0.1);
-    border-top-color: #4A9EFF;
+    border-top-color: var(--color-accent-blue);
     border-radius: 50%;
     animation: spin 1s linear infinite;
 }
@@ -525,7 +556,7 @@ body.loaded .loading-screen {
     display: block;
     width: 25px;
     height: 3px;
-    background: #E6D7C3;
+    background: var(--color-text);
     margin: 5px 0;
     transition: all 0.3s ease;
 }
@@ -537,8 +568,8 @@ body.loaded .loading-screen {
     right: 30px;
     width: 50px;
     height: 50px;
-    background: #FB5656;
-    color: #E6D7C3;
+    background: var(--color-accent-red);
+    color: var(--color-text);
     border: none;
     border-radius: 50%;
     cursor: pointer;
@@ -559,11 +590,11 @@ body.loaded .loading-screen {
     transform: translateY(-3px);
 }
 
-/* Footer */
+/* Footer — improved contrast (0.7 instead of 0.5) */
 footer {
     text-align: center;
     padding: 60px 20px;
-    opacity: 0.5;
+    opacity: 0.7;
     font-size: 0.9rem;
     position: relative;
     z-index: 10;
@@ -586,7 +617,7 @@ footer {
     overflow: hidden;
 }
 
-/* Improved mobile responsive design */
+/* Mobile responsive design */
 @media (max-width: 768px) {
     header {
         padding: 15px;
@@ -620,7 +651,7 @@ footer {
         flex-wrap: nowrap;
     }
 
-    nav a {
+    nav a:not(.btn-red) {
         display: block;
         font-size: 18px;
         padding: 8px 16px;
@@ -658,10 +689,10 @@ footer {
         margin-bottom: 40px;
     }
 
-    /* Fix about grid for mobile */
     .about-grid {
         grid-template-columns: 1fr;
         gap: 20px;
+        width: 100%;
     }
 
     .about-item {
@@ -718,6 +749,13 @@ footer {
         right: 0;
         visibility: visible;
     }
+
+    /* Disable backdrop-filter on mobile for GPU performance */
+    .about-item,
+    .experience-item,
+    .contact-section {
+        backdrop-filter: none;
+    }
 }
 
 /* Additional breakpoint for very small phones */
@@ -758,82 +796,20 @@ footer {
     }
 }
 
-/* Fix Tools & Technologies spacing - make it consistent */
-.about-item:nth-child(4) p {
-    margin-bottom: 10px;
-}
-
-.about-item:nth-child(4) p:last-child {
-    margin-bottom: 0;
-}
-
-/* Make all paragraphs in about items have consistent spacing */
-.about-item p {
-    margin-bottom: 16px;
-    line-height: 1.8;
-}
-
-.about-item p:last-child {
-    margin-bottom: 0;
-}
-
-/* Fix the Tools section formatting */
-.about-item:nth-child(4) {
-    line-height: 1.8;
-}
-
-.about-item:nth-child(4) strong {
-    display: block;
-    margin-top: 10px;
-    margin-bottom: 5px;
-}
-
-.about-item:nth-child(4) p:first-child strong {
-    margin-top: 0;
-}
-
-/* Ensure proper mobile responsiveness */
-@media (max-width: 768px) {
-    .about-grid {
-        grid-template-columns: 1fr;
-        width: 100%;
-    }
-}
-
-/* Move content closer to headers in all About cards */
-.about-item h3 {
-    margin-bottom: 16px;
-}
-
-/* Specifically for Tools & Technologies card */
-.about-item:nth-child(4) h3 {
-    margin-bottom: 16px;
-}
-
-/* Ensure first paragraph starts close to header */
-.about-item:nth-child(4) p:first-of-type {
-    margin-top: 0;
-}
-
-/* Optional: Apply to all about items for consistency */
-.about-item p:first-of-type {
-    margin-top: 0;
-}
-
-/* Force bigger logo on desktop - add at VERY END */
+/* Force bigger logo on desktop */
 @media (min-width: 769px) {
     header .logo {
-        width: 200px;  /* Even bigger */
+        width: 200px;
         height: 120px;
     }
 
     header .logo svg {
         width: 100%;
-        height: 80px;  /* Adjust SVG height */
+        height: 80px;
     }
 
     header .logo-subtitle {
-        font-size: 26px;  /* Even bigger text */
+        font-size: 26px;
     }
 }
 
