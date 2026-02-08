@@ -9,7 +9,13 @@ function createStars() {
         star.className = `star ${['small', 'medium', 'large'][Math.floor(Math.random() * 3)]}`;
         star.style.left = Math.random() * 100 + '%';
         star.style.top = Math.random() * 100 + '%';
-        star.style.animationDelay = Math.random() * 3 + 's';
+        
+        // Randomize animation delays and durations for natural twinkling effect
+        const randomDelay = Math.random() * 5;
+        const randomDuration = 2 + Math.random() * 3;
+        star.style.animationDelay = randomDelay + 's';
+        star.style.animationDuration = randomDuration + 's';
+        
         fragment.appendChild(star);
     }
 
@@ -121,54 +127,6 @@ function animateGeometry() {
     });
 }
 
-// CSS animation for floating shapes
-function addFloatingAnimation() {
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(var(--rotation, 0deg)); }
-            100% { transform: translateY(-10px) rotate(var(--rotation, 0deg)); }
-        }
-    `;
-    document.head.appendChild(style);
-}
-
-// Add parallax effect to background elements
-function initParallax() {
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const parallaxElements = document.querySelectorAll('.geometric-shape');
-
-        parallaxElements.forEach((element, index) => {
-            const speed = 0.1 + (index * 0.05);
-            const yPos = -(scrolled * speed);
-            element.style.transform += ` translateY(${yPos}px)`;
-        });
-    });
-}
-
-// Enhanced star twinkling effect
-function enhanceStarEffects() {
-    const stars = document.querySelectorAll('.star');
-    stars.forEach(star => {
-        // Add random twinkling intervals for more natural effect
-        const randomDelay = Math.random() * 5;
-        const randomDuration = 2 + Math.random() * 3;
-        star.style.animationDelay = randomDelay + 's';
-        star.style.animationDuration = randomDuration + 's';
-    });
-}
-
-// Add loading animation
-function addLoadingAnimation() {
-    document.body.style.opacity = '0';
-    document.body.style.transition = 'opacity 0.5s ease-in-out';
-
-    window.addEventListener('load', () => {
-        document.body.style.opacity = '1';
-    });
-}
-
 // Initialize all functionality when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Core functionality
@@ -181,14 +139,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initExternalLinkTracking();
 
     // Enhanced effects
-    addFloatingAnimation();
     animateGeometry();
-    enhanceStarEffects();
-    addLoadingAnimation();
-
-    // Optional: Add parallax (comment out if performance is an issue)
-    // initParallax();
-
 });
 
 // Export functions for potential external use

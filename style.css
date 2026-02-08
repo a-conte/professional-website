@@ -108,6 +108,11 @@ img, svg, video {
     100% { opacity: 1; }
 }
 
+@keyframes float {
+    0% { transform: translateY(0px) rotate(var(--rotation, 0deg)); }
+    100% { transform: translateY(-10px) rotate(var(--rotation, 0deg)); }
+}
+
 /* Geometric background patterns */
 .bg-geometry {
     position: fixed;
@@ -322,7 +327,7 @@ nav a:hover {
 
 .about-item {
     background: rgba(255, 255, 255, 0.03); /* More transparent */
-    padding: 40px;
+    padding: 30px;
     border-radius: 24px; /* Softer corners */
     border: 1px solid rgba(255, 255, 255, 0.05); /* Subtler border */
     backdrop-filter: blur(20px);
@@ -704,12 +709,14 @@ footer {
         backdrop-filter: blur(10px);
         flex-direction: column;
         justify-content: center;
-        transition: right 0.3s ease;
+        transition: right 0.3s ease, visibility 0.3s ease;
         z-index: 99;
+        visibility: hidden;
     }
 
     nav.mobile-open {
         right: 0;
+        visibility: visible;
     }
 }
 
@@ -753,21 +760,21 @@ footer {
 
 /* Fix Tools & Technologies spacing - make it consistent */
 .about-item:nth-child(4) p {
-    margin-bottom: 10px !important;
+    margin-bottom: 10px;
 }
 
 .about-item:nth-child(4) p:last-child {
-    margin-bottom: 0 !important;
+    margin-bottom: 0;
 }
 
 /* Make all paragraphs in about items have consistent spacing */
 .about-item p {
-    margin-bottom: 16px !important;
-    line-height: 1.8 !important;
+    margin-bottom: 16px;
+    line-height: 1.8;
 }
 
 .about-item p:last-child {
-    margin-bottom: 0 !important;
+    margin-bottom: 0;
 }
 
 /* Fix the Tools section formatting */
@@ -788,45 +795,45 @@ footer {
 /* Ensure proper mobile responsiveness */
 @media (max-width: 768px) {
     .about-grid {
-        grid-template-columns: 1fr !important;
-        width: 100% !important;
+        grid-template-columns: 1fr;
+        width: 100%;
     }
 }
 
 /* Move content closer to headers in all About cards */
 .about-item h3 {
-    margin-bottom: 16px !important;
+    margin-bottom: 16px;
 }
 
 /* Specifically for Tools & Technologies card */
 .about-item:nth-child(4) h3 {
-    margin-bottom: 16px !important;
+    margin-bottom: 16px;
 }
 
 /* Ensure first paragraph starts close to header */
 .about-item:nth-child(4) p:first-of-type {
-    margin-top: 0 !important;
+    margin-top: 0;
 }
 
 /* Optional: Apply to all about items for consistency */
 .about-item p:first-of-type {
-    margin-top: 0 !important;
+    margin-top: 0;
 }
 
 /* Force bigger logo on desktop - add at VERY END */
 @media (min-width: 769px) {
     header .logo {
-        width: 200px !important;  /* Even bigger */
-        height: 120px !important;
+        width: 200px;  /* Even bigger */
+        height: 120px;
     }
 
     header .logo svg {
-        width: 100% !important;
-        height: 80px !important;  /* Adjust SVG height */
+        width: 100%;
+        height: 80px;  /* Adjust SVG height */
     }
 
     header .logo-subtitle {
-        font-size: 26px !important;  /* Even bigger text */
+        font-size: 26px;  /* Even bigger text */
     }
 }
 
